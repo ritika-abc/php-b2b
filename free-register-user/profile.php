@@ -23,6 +23,20 @@
             <th>company name</th>
             <td>Global p. l. </td>
         </tr>
+        <tr>
+            <th>Your Plan</th>
+            <td class="text-danger">PRIME ₹23,999 /Year   </td>
+        </tr>
+        <tr>
+            <th>Your Plan expire</th>
+            <td class="text-danger"> XX-XX-XXXX </td>
+        </tr>
+        <tr>
+            <th>  register date</th>
+            <td  >1 january 2024   </td>
+        </tr>
     </table>
-    <a href=""></a>
+    <hr>
+    
+    <a href="" class="mx-3">Edit Your Profile</a>
 </div>

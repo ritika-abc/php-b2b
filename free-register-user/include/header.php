@@ -11,16 +11,27 @@
 
     <title>Gentelella Alela!</title>
 
-   
+
     <link href="./gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-   
+
     <link href="./gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
- 
+
     <link href="./gentelella-master/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-   
+
     <link href="./gentelella-master/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
-  
+
     <link href="./gentelella-master/build/css/custom.min.css" rel="stylesheet">
+    <link href="./gentelella-master/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        /* .actionBar{
+        display: none;
+    } */
+    </style>
 </head>
 
 <body class="nav-md">
@@ -51,20 +62,22 @@
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
-                            <h3>General</h3>
-                            <ul class="nav side-menu ">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="../admin/index.php">home page {admin}</a></li>
-                                        <li><a href="../admin/add_category.php">add category</a></li>
-                                        <li><a href="index2.html">Dashboard2</a></li>
-                                        <li><a href="index3.html">Dashboard3</a></li>
-                                    </ul>
-                                </li>                               
-                            </ul>
-                        </div>
-                        
+                            <h3>Dashboard</h3>
+                            <ul class="nav side-menu active show">
+                                <li><a><i class="fa fa-home"></i> User Access<span class="fa fa-chevron-down "></span></a>
+                                    <ul class="nav child_menu ">
+                                        <!-- <li><a href="../admin/index.php">Add Your Free Product</a></li>
+                                        <li><a href="../admin/add_category.php">add category</a></li> -->
+                                        <li><a href="../admin/index.php" class="active">Add Your Free Product</a></li>
+                                        <li><a href="../admin/index.php">View Your Product</a></li>
 
+                                        <li><a href="index2.html">All buyleads</a></li>
+                                        <li><a href="index3.html">Access Buyleads</a></li>
+                                      
+                                    </ul>
+                                </li>
+                            </ul>                           
+                        </div>
                     </div>
                     <!-- /sidebar menu -->
 
