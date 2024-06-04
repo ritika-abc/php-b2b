@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["user_name"])) {
+    header("Location:error.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +59,7 @@
                             <img src="../gentelella-master/images/img.jpg" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome, reet</span>
+                            <span>Welcome,  </span>
                             <h2>John Doe</h2>
                         </div>
                     </div>

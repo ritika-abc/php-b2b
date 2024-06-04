@@ -13,6 +13,7 @@ include "admin/config.php";
 if (isset($_POST['submit'])) {
     $user_name = $_POST['user_name'];
     $user_email = $_POST['user_email'];
+    $user_role = $_POST['user_role'];
    
     
 
@@ -22,9 +23,12 @@ if (isset($_POST['submit'])) {
       $user_name = $row['user_name'];
      }
     $user_matched = mysqli_num_rows($result);
+    $row = mysqli_fetch_array($query);
     if ($user_matched > 0) {
         $_SESSION['user_name'] = $user_name;
         $_SESSION['user_email'] = $user_email;
+        $_SESSION['user_role'] =  $row['user_role'];
+
         
         
         
@@ -89,6 +93,8 @@ if (isset($_POST['submit'])) {
         <div class="form-group mt-3">
           <label for="email">Enter Your Email</label>
           <input type="email" name="user_email" class="form-control mt-2" id="email" placeholder="Enter Your Email">
+          <input type="hidden" class="form-control" name="user_role">
+
         </div>
         <!-- <div class="form-group mt-3">
           
