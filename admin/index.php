@@ -1,86 +1,100 @@
 <?php
-// session_start();
 
-// if (!isset($_SESSION["password"])) {
-//     header("Location:index.php");
-// }
+// 
+session_start();
+
+include "config.php";
+
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $password = md5($_POST['password']);
+
+
+    $result = mysqli_query($con, "select * 
+ from admin WHERE name='$name' and password='$password'");
+    $user_matched = mysqli_num_rows($result);
+    if ($user_matched > 0) {
+        $_SESSION['name'] = $name;
+        $_SESSION['password'] = $password;
+
+        echo "<script>alert('Welcome')</script>";
+
+        header("location:add_category.php");
+    } else {
+        echo "<script>alert('not matched !!!!')</script>";
+    }
+}
 ?>
-<?php
- 
- 
-include_once "include/header.php";
 
-?>
-<!-- page content -->
-<div class="right_col" role="main">
-    <!-- top tiles -->
-    <div class="row" style="display: inline-block;">
-        <div class="tile_count">
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-                <div class="count">2500</div>
-                <span class="count_bottom"><i class="green">4% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-                <div class="count">123.50</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-                <div class="count green">2,500</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-                <div class="count">4,567</div>
-                <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-                <div class="count">2,315</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4  tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-                <div class="count">7,325</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-        </div>
-    </div>
-    <!-- /top tiles -->
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12 ">
-            <div class="dashboard_graph">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Login Page </title>
+ <!-- Bootstrap CSS -->
 
-                <div class="row x_title">
-                    <div class="col-md-6">
-                        <h3>Network Activities <small>Graph title sub-title</small></h3>
-                    </div>
-                    <div class="col-md-6">
-                        <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                            <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                        </div>
-                    </div>
-                </div>
+ <link href="./gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-                <!-- content write here -->
+ <link href="./gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
+ <link href="./gentelella-master/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
-                <div class="clearfix"></div>
-            </div>
-        </div>
+ <link href="./gentelella-master/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
 
-    </div>
-    <br />
-</div>
+ <link href="./gentelella-master/build/css/custom.min.css" rel="stylesheet">
 
+ <!-- Custom CSS -->
+ <style>
+     .login-container {
+         max-width: 400px;
+         margin: 100px auto;
+         padding: 20px;
+         background-color: #fff;
+         border-radius: 5px;
+         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+         animation: slideUp 0.5s ease;
+     }
 
+     @keyframes slideUp {
+         from {
+             transform: translateY(20px);
+             opacity: 0;
+         }
 
+         to {
+             transform: translateY(0);
+             opacity: 1;
+         }
+     }
+ </style>
+</head>
 
-<!-- /page content -->
-<?php
-include_once "include/footer.php";
-?>
+<body>
+ <div class="container">
+     <div class="login-container">
+         <h2 class="text-center">Login </h2>
+         <!-- <p class="mt-3 text-success fw-bold ">?php echo ($_SESSION["otp"] == "") ? 'verification First': " OTP verification successful. You can now proceed with Login."; ?></p> -->
+         <p class="mt-3 text-success fw-bold ">Welcome Admin</p>
+         <form method="post">
+             <!-- <p >OTP verification successful. You can now proceed with Login.</p> -->
+             <div class="form-group mt-3">
+                 <label >Username </label>
+                 <input type="text" name="name" class="form-control mt-2" placeholder="Enter username ">
+             </div>
+             <div class="form-group mt-3">
+                 <label for="email">Enter Your Password</label>
+                 <input type="password" name="password" class="form-control mt-2" placeholder="Enter Your Password">
+             </div>
+             <button type="submit" name="submit" class="btn btn-primary btn-block mt-3 w-100">Login</button>
+             <a href="logout.php" class="btn btn-danger fw-bold w-100 py-2 mt-3">logout</a>
+         </form>
+     </div>
+ </div>
+
+ <script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

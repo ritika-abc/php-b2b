@@ -13,27 +13,28 @@ include "admin/config.php";
 if (isset($_POST['submit'])) {
     $user_name = $_POST['user_name'];
     $user_email = $_POST['user_email'];
-    $user_role = $_POST['user_role'];
+    // $user_role = $_POST['user_role'];
    
     
 
     $result = mysqli_query($con, "select * 
      from `user` WHERE user_name='$user_name' and user_email='$user_email'");
-     while($row=mysqli_fetch_array($result)){
-      $user_name = $row['user_name'];
-     }
+    //  while($row=mysqli_fetch_array($result)){
+    //   $user_name = $row['user_name'];
+    //  }
     $user_matched = mysqli_num_rows($result);
-    $row = mysqli_fetch_array($query);
+    $row = mysqli_fetch_array($result);
     if ($user_matched > 0) {
         $_SESSION['user_name'] = $user_name;
         $_SESSION['user_email'] = $user_email;
-        $_SESSION['user_role'] =  $row['user_role'];
+        // $_SESSION['user_role'] =  $row['user_role'];
 
         
         
         
               
-       echo "<script>alert('welcome')</script>";
+      //  echo "<script>alert('welcome')</script>";
+      header("location:./free-register-user/index.php");
     } else {
       echo "<script>alert('not match')</script>";
 
@@ -83,7 +84,7 @@ if (isset($_POST['submit'])) {
     <div class="login-container">
       <h2 class="text-center">Login </h2>
       <!-- <p class="mt-3 text-success fw-bold ">?php echo ($_SESSION["otp"] == "") ? 'verification First': " OTP verification successful. You can now proceed with Login."; ?></p> -->
-      <p class="mt-3 text-success fw-bold ">OTP verification successful.</p>
+      <p class="mt-3 text-success   text-capitalize">If You Are Not Verified Please Register First.</p>
       <form method="post">
         <!-- <p >OTP verification successful. You can now proceed with Login.</p> -->
         <div class="form-group mt-3">
@@ -102,7 +103,7 @@ if (isset($_POST['submit'])) {
         </div> -->
         <button type="submit" name="submit" class="btn btn-primary btn-block mt-3 w-100" >Login</button>
         <a  href="logout.php"  class="btn btn-danger fw-bold w-100 py-2 mt-3">logout</a>
-
+<!-- <a href="./free-register-user/index.php"></a> -->
       </form>
     </div>
   </div>

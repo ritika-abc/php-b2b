@@ -47,20 +47,16 @@ if (!isset($_SESSION["user_name"])) {
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
-                    </div>
+                     
 
-                    <div class="clearfix"></div>
+                    
 
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
-                        <div class="profile_pic">
-                            <img src="../gentelella-master/images/img.jpg" alt="..." class="img-circle profile_img">
-                        </div>
+                       
                         <div class="profile_info">
                             <span>Welcome,  </span>
-                            <h2>John Doe</h2>
+                            <h3 class="text-white text-capitalize"><?php echo $_SESSION["user_name"] ?></h3>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -127,7 +123,7 @@ if (!isset($_SESSION["user_name"])) {
                                         <span>Settings</span>
                                     </a>
                                     <a class="dropdown-item" href="javascript:;">Help</a>
-                                    <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </div>
                             </li>
 

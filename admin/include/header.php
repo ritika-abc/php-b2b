@@ -11,16 +11,18 @@
 
     <title>Gentelella Alela!</title>
 
-   
+
     <link href="./gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-   
+
     <link href="./gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
- 
+
     <link href="./gentelella-master/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-   
+
     <link href="./gentelella-master/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
-  
+
     <link href="./gentelella-master/build/css/custom.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body class="nav-md">
@@ -49,23 +51,42 @@
                     <br />
 
                     <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <!-- <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="../admin/index.php">home page {admin}</a></li>
-                                        <li><a href="../admin/add_category.php">add category</a></li>
-                                        <li><a href="index2.html">Dashboard2</a></li>
-                                        <li><a href="index3.html">Dashboard3</a></li>
-                                    </ul>
-                                </li>                               
+                                <li><a><i class="fa fa-home"></i> Product <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="../admin/index.php">Home Page {Admin}</a></li>
+                                    <li><a href="../admin/add_category.php">Add Catedgory</a></li>
+                                    <li><a href="index2.html">View All Supplier</a></li>
+                                    <li><a href="index3.html">View All Products</a></li>
+                                    <li><a href="index3.html" class="active">Add Products</a></li>
+                                </ul>
+
+
+                                <ul class="nav child_menu text-white">
+
+                                    <li><a href="../admin/add_category.php" class="text-white">Add Categdory</a></li>
+
+                                    <li><a href="index3.html">Add Products</a></li>
+                                </ul>
                             </ul>
                         </div>
-                        
-
-                    </div>
+                    </div> -->
+                    <hr class="text-white bg-light">
+                    <ul class="navbar-nav mx-4 text-capitalize">
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add category</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view category list</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add sub category</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view sub category list</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add micro sub category</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view micro sub category list</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add Supplier  </a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view All  Supplier List</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add new buyleads</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view all buyleads</a></li>
+                    </ul>
                     <!-- /sidebar menu -->
 
                     <!-- /menu footer buttons -->
