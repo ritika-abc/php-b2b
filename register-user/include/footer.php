@@ -28,6 +28,11 @@
     <!-- Custom Theme Scripts -->
     <script src="./gentelella-master/build/js/custom.min.js"></script>
     <script src="./gentelella-master/vendors/dropzone/dist/min/dropzone.min.js"></script>
+
+    <!--  -->
+
+
+   
 </body>
 
 </html>

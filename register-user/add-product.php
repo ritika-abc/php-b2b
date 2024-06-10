@@ -7,13 +7,7 @@ include_once "include/header.php";
 
 include "config.php";
 if (isset($_POST['submit'])) {
-
-    $user_website = $_POST['user_website'];
-    $state = $_POST['state'];
-    $city = $_POST['city'];
-    $pincode = $_POST['pincode'];
-    $product_name = $_POST['product_name'];
-    $gst = $_POST['gst'];
+ 
     // 
 
 
@@ -24,7 +18,7 @@ if (isset($_POST['submit'])) {
     // $fld2 = "upload/" . $image;
     move_uploaded_file($_FILES["product_image"]['tmp_name'], $fld1);
 
-    $insert = "INSERT INTO `user`(`user_website`, `state`, `city`, `pincode`,`product_name`,`gst`,`product_image`) VALUES ('$user_website','$state','$city','$pincode','$product_name','$gst','$fld1 ')";
+    $insert = "INSERT INTO `user`(`product_image`) VALUES ('$fld1 ')";
     $query = mysqli_query($con, $insert);
 }
 ?>
@@ -38,11 +32,7 @@ if (isset($_POST['submit'])) {
                     <?php include_once "profile.php" ?>
                 </div>
                 <div class="col-12 col-lg-8 text-capitalize ">
-                    <!-- <button class="section my-2 text-capitalize   btn btn-light px-4  border disabled  rounded-pill ">create account</button>
-                    <button class="section my-2 text-capitalize   btn btn-light px-4  border disabled  rounded-pill ">Company Details</button>
-                    <button class="section my-2 text-capitalize   btn btn-light px-4  disabled border  rounded-pill ">add GST</button> -->
-
-                    <!-- Tabs -->
+                    
                     <form action="" method="post" enctype="multipart/form-data">
                         <div  class="form_wizard wizard_verticle"> <!-- subbmit 2 start here  -->
                             <div id=" ">

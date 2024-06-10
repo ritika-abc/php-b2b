@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
         
               
       //  echo "<script>alert('welcome')</script>";
-      header("location:./free-register-user/index.php");
+      header("location:./register-user");
     } else {
       echo "<script>alert('not match')</script>";
 

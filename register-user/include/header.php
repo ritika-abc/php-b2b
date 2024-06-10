@@ -31,6 +31,9 @@ if (!isset($_SESSION["user_name"])) {
     <link href="./gentelella-master/build/css/custom.min.css" rel="stylesheet">
     <link href="./gentelella-master/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
 
+
+    <!--  -->
+     
     <style>
         body {
             height: 100vh;
@@ -72,8 +75,8 @@ if (!isset($_SESSION["user_name"])) {
                                     <ul class="nav child_menu ">
                                         <!-- <li><a href="../admin/index.php">Add Your Free Product</a></li>
                                         <li><a href="../admin/add_category.php">add category</a></li> -->
-                                        <li><a href="../admin/index.php" class="active">Add Your Free Product</a></li>
-                                        <li><a href="../admin/index.php">View Your Product</a></li>
+                                        <li><a href="../register-user/add-product.php" class="active">Add Your Free Product</a></li>
+                                        <li><a href="../register-user/view-product.php">View Your Product</a></li>
 
                                         <li><a href="index2.html">All buyleads</a></li>
                                         <li><a href="index3.html">Access Buyleads</a></li>

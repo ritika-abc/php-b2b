@@ -76,10 +76,11 @@
                     </div> -->
                     <hr class="text-white bg-light">
                     <ul class="navbar-nav mx-4 text-capitalize">
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add category</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="add_category.php" class="nav-link"> add category</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view category list</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add sub category</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view sub category list</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> Add Product</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add micro sub category</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view micro sub category list</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add Supplier  </a></li>
