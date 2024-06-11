@@ -10,7 +10,7 @@ include_once "include/header.php";
     <div class="row">
         <div class="col-12">
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="my-5  d-flex">
-                <input type="search" placeholder="Search Here By Product Name / Company Name" name="search_query" class="form-control w-75 rounded float-end">
+                <input type="search" placeholder="Search Here By seller Name / Company Name" name="search_query" class="form-control w-75 rounded float-end">
                 <input type="submit" name="search" class="btn-sm btn-success">
             </form>
         </div>
@@ -32,23 +32,24 @@ include_once "include/header.php";
         ?>
 
             <div class="col-12 my-4">
-                <table class="table  table-striped table-success table text-capitalize">
-
+                <table class="table  table-striped table-success table ">
+                  
+                    <thead class="text-capitalize">
+                        <th>S.No.</th>
+                        <th>product image</th>
+                        <th>product name</th>
+                        <th>product price</th>
+                        <th>product description</th>
+                        <th>company name</th>
+                        <th>moq</th>
+                        <th>date</th>
+                    </thead>
                     <tbody class=" ">
-                        <thead>
-                            <th>S.No.</th>
-                            <th>product image</th>
-                            <th>product name</th>
-                            <th>product price</th>
-                            <th>product description</th>
-                            <th>company name</th>
-                            <th>moq</th>
-                            <th>date</th>
-                        </thead>
+
                         <?php
 
                         // SQL query to search for data in your database (replace 'table_name' with your actual table name and 'column_name' with the column you want to search)
-                        $sql = "SELECT * FROM product WHERE product_name LIKE '%" . $search_query . "%'" . " or company_name LIKE '%" . $search_query . "%'";
+                        $sql = "SELECT * FROM user WHERE user_name LIKE '%" . $search_query . "%'" . " or user_email LIKE '%" . $search_query . "%'";
                         $result = $con->query($sql);
 
                         // Display the results
@@ -60,13 +61,16 @@ include_once "include/header.php";
                         ?>
                                 <tr>
 
-                                    <td class='id'><img src="" height="50px" width="50px" alt=""> <img src="" height="50px" width="50px" alt=""> <img src="" height="50px" width="50px" alt=""></td>
-                                    <td><?php echo $row['product_name']; ?></td>
-                                    <td><?php echo $row['price']; ?></td>
-                                    <td><?php echo $row['product_description']; ?></td>
+                                    <td class='id'><img src="<?php echo $row['image']; ?>" height="50px" width="50px" alt=""> </td>
+                                    <td><?php echo $row['user_name']; ?></td>
+                                    <td><?php echo $row['user_email']; ?></td>
+                                    <td><?php echo $row['user_phone']; ?></td>
                                     <td><?php echo $row['company_name']; ?></td>
-                                    <td><?php echo $row['moq']; ?></td>
+                                    <td><?php echo $row['plan']; ?></td>
                                     <td><?php echo $row['date']; ?></td>
+                                    <td><?php echo $row['otp']; ?></td>
+                                    <td><?php echo $row['state']; ?></td>
+                                    <td><?php echo $row['gst']; ?></td>
                                 </tr>
                     <?php
                             }
@@ -86,6 +90,8 @@ include_once "include/header.php";
 
 
             <div class="col-12">
+                <h3>User  Table</h3>
+                 
                 <div class="col-md-12">
                     <?php
                     include "config.php"; // database configuration
@@ -98,21 +104,26 @@ include_once "include/header.php";
                     }
                     $offset = ($page - 1) * $limit;
                     /* select query of user table with offset and limit */
-                    $sql = "SELECT * FROM product ORDER BY pro_id DESC LIMIT {$offset},{$limit}";
+                    $sql = "SELECT * FROM user ORDER BY user_id DESC LIMIT {$offset},{$limit}";
                     $result = mysqli_query($con, $sql) or die("Query Failed.");
                     if (mysqli_num_rows($result) > 0) {
                     ?>
-                        <table class="table  table-striped table-light table text-capitalize">
-                            <thead>
+                        <table class="table  table-striped table-light table overflow-scroll">
+                            <thead class="text-capitalize">
                                 <th>S.No.</th>
-                                <th>product image</th>
-                                <th>product name</th>
-                                <th>product price</th>
-                                <th>product description</th>
-                                <th>company name</th>
-                                <th>moq</th>
-                                <th>date</th>
-                                <th>edit</th>
+                                <th>user name</th>
+                                <th> logo</th>
+                                <th> email</th>
+                                <th> phone</th>
+                                <th> company name</th>
+                                <th>plan</th>
+                               
+                                <th>otp</th>
+                                <th>state</th>
+                                <th>gst</th>
+                                <th> register date</th>
+                                <th>expire plan</th>                               
+                                
                             </thead>
                             <tbody>
                                 <?php
@@ -120,15 +131,23 @@ include_once "include/header.php";
                                 while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
                                     <tr>
-                                        <td class='id'><?php echo $serial; ?></td>
-                                        <td class='id'><img src="<?php echo $row['product_image1'] ?>" height="150px" width="150px" alt=""> <img src="<?php echo $row['product_image2'] ?>" height="150px" width="150px" alt=""> <img src="<?php echo $row['product_image3'] ?>" height="150px" width="150px" alt=""></td>
-                                        <td><?php echo $row['product_name']; ?></td>
-                                        <td><?php echo $row['price']; ?></td>
-                                        <td><?php echo $row['product_description']; ?></td>
+                                        <td><?php echo $serial; ?></td>
+                                        <td><?php echo $row['user_name']; ?>  <a href="user-update.php?user_id=<?php echo $row['user_id'] ?>" class="btn btn-success btn-sm w-100 mt-3">Edit</a> <a href="" class="btn btn-danger btn-sm w-100">Delete</a></td>
+                                        <td class='id'><img src="<?php echo $row['image']; ?>" height="50px" width="50px" alt=""> </td>
+                                        <!-- <td>?php echo $row['user_name']; ?></td> -->
+                                        <td><?php echo $row['user_email']; ?></td>
+                                        <td><?php echo $row['user_phone']; ?></td>
                                         <td><?php echo $row['company_name']; ?></td>
-                                        <td><?php echo $row['moq']; ?></td>
+                                        <td><?php echo $row['plan']; ?></td>
+                                        <td><?php echo $row['otp']; ?></td>
+                                        <td><?php echo $row['state']; ?></td>
+                                        <td><?php echo $row['gst']; ?></td>
                                         <td><?php echo $row['date']; ?></td>
-                                        <td><a href="update-product.php?pro_id=<?php echo $row['pro_id'] ?>">Edit</a></td>
+
+                                        <td><?php echo $row['expire']; ?></td>
+                                        
+
+
                                     </tr>
                                 <?php
                                     $serial++;
@@ -140,7 +159,7 @@ include_once "include/header.php";
                         echo "<h3>No Results Found.</h3>";
                     }
                     // show pagination
-                    $sql1 = "SELECT * FROM `product`";
+                    $sql1 = "SELECT * FROM `user`";
                     $result1 = mysqli_query($con, $sql1) or die("Query Failed.");
 
                     if (mysqli_num_rows($result1) > 0) {
@@ -151,7 +170,7 @@ include_once "include/header.php";
 
                         echo '<ul class="pagination ">';
                         if ($page > 1) {
-                            echo '<li class="page-item"><a class="page-link" href="view-product.php?page=' . ($page - 1) . '">Prev</a></li>';
+                            echo '<li class="page-item"><a class="page-link" href="view-user.php?page=' . ($page - 1) . '">Prev</a></li>';
                         }
                         for ($i = 1; $i <= $total_page; $i++) {
                             if ($i == $page) {
@@ -159,10 +178,10 @@ include_once "include/header.php";
                             } else {
                                 $active = " ";
                             }
-                            echo '<li class="page-item' . $active . '"><a class="page-link"  href="view-product.php?page=' . $i . '">' . $i . '</a></li>';
+                            echo '<li class="page-item' . $active . '"><a class="page-link"  href="view-user.php?page=' . $i . '">' . $i . '</a></li>';
                         }
                         if ($total_page > $page) {
-                            echo '<li class="page-item"><a class="page-link" href="view-product.php?page=' . ($page + 1) . '">Next</a></li>';
+                            echo '<li class="page-item"><a class="page-link" href="view-user.php?page=' . ($page + 1) . '">Next</a></li>';
                         }
 
                         echo '</ul>';

@@ -12,7 +12,7 @@ while ($row = mysqli_fetch_array($q)) {
 
     <div class="profile_card bg-white py-3">
         <div class="profile-image py-5 bg-dark  text-center  m-auto d-flex justify-content-center align-items-center" style="height: 150px;width:150px;border-radius:50%">
-            <img src="<?php echo ($row['image'] == "") ? 'photo.png' : $row['image'];   ?>" height="100px" width="100px" alt="profile image">
+            <img src="<?php echo $row['image'] ?>" height="100px" width="100px" alt="profile image">
         </div>
         <table class="table my-3 text-capitalize">
 
@@ -39,11 +39,11 @@ while ($row = mysqli_fetch_array($q)) {
             </tr>
             <tr>
                 <th>Your Plan</th>
-                <td class="text-danger">PRIME ₹23,999 /Year </td>
+                <td class="text-danger"><?php echo $row["plan"] ?> </td>
             </tr>
             <tr>
                 <th>Your Plan expire</th>
-                <td class="text-danger"> XX-XX-XXXX </td>
+                <td class="text-danger"> <?php echo $row["expire"] ?></td>
             </tr>
             <tr>
                 <th> register date</th>
