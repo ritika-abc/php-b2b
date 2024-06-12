@@ -42,7 +42,7 @@ include_once "include/header.php";
                         <th>product description</th>
                         <th>company name</th>
                         <th>moq</th>
-                        <th>date</th>
+                        <th>start date</th>
                     </thead>
                     <tbody class=" ">
 
@@ -123,6 +123,7 @@ include_once "include/header.php";
                                 <th>gst</th>
                                 <th> register date</th>
                                 <th>expire plan</th>                               
+                                <th>start  plan</th>                               
                                 
                             </thead>
                             <tbody>
@@ -145,6 +146,7 @@ include_once "include/header.php";
                                         <td><?php echo $row['date']; ?></td>
 
                                         <td><?php echo $row['expire']; ?></td>
+                                        <td><?php echo $row['start_date']; ?></td>
                                         
 
 

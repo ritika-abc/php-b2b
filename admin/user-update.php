@@ -27,6 +27,7 @@ while ($row = mysqli_fetch_array($query)) {
     $city = $row['city'];
     $gst = $row['gst'];
     $image = $row['image'];
+    $start_date = $row['start_date'];
 }
 
 ?>
@@ -51,6 +52,7 @@ if (isset($_POST['submit'])) {
     $city = $_POST['city'];
     $gst = $_POST['gst'];
     $image = $_POST['image'];
+    $start_date = $_POST['start_date'];
 
     // image
     //  $_FILES is a super global variable which can be used to upload files
@@ -71,6 +73,7 @@ if (isset($_POST['submit'])) {
         `city`='$city',
         `gst`='$gst',
         `state`='$state',
+        `start_date`='$start_date',
         `user_email`='$user_email' 
         WHERE `user_id`='$user_id'";
 
@@ -94,6 +97,7 @@ if (isset($_POST['submit'])) {
         `city`='$city',
         `gst`='$gst',
         `state`='$state',
+        `start_date`='$start_date',
         `image`='$fld1',
         `user_email`='$user_email' 
         WHERE `user_id`='$user_id'";
@@ -134,7 +138,11 @@ if (isset($_POST['submit'])) {
                     <option value="active" <?php if($plan == 'active') echo "selected"; ?>>active</option>
                 </select>
             </div>
-            <div class="col-12 col-md-4 my-3 text-capitalize">
+            <div class="col-12 col-md-2 my-3 text-capitalize">
+                <label for="">Plan start  Date</label>
+                <input type="date" name="start_date" value="<?php echo $start_date ?>" class="form-control mt-1">
+            </div>
+            <div class="col-12 col-md-2 my-3 text-capitalize">
                 <label for="">Plan Expire Date</label>
                 <input type="date" name="expire" value="<?php echo $expire ?>" class="form-control mt-1">
             </div>
