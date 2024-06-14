@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     $buyer_email = $_POST["buyer_email"];
     $number = $_POST["number"];
     $queiry_for = $_POST["queiry_for"];
-    $queiry_for = $_POST["queiry_for"];
+ 
 
     $sql = "INSERT INTO `limit_buylead`(`buyleads_id`, `user_email`,`user_id`,`buyer_email`,`number`,`queiry_for`) VALUES ('$buyleads_id','$user_email','$user_id','$buyer_email','$number','$queiry_for')";
     $result =  $con->query($sql);

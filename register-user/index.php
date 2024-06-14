@@ -14,8 +14,8 @@ $sql = "SELECT* FROM `user` WHERE `user_id`='$user_id'";
 $query = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_array($query)) {
     # to select all the data
-   
-    
+
+
     $user_phone = $row['user_phone'];
     $company_name = $row['company_name'];
     $company_address = $row['company_address'];
@@ -26,6 +26,7 @@ while ($row = mysqli_fetch_array($query)) {
     $gst = $row['gst'];
     $iec_code = $row['iec_code'];
     $type = $row['type'];
+    $product_name = $row['product_name'];
     $image = $row['image'];
 }
 
@@ -39,7 +40,7 @@ if (isset($_SESSION["user_id"])) {
 }
 if (isset($_POST['submit'])) {
 
- 
+
     $user_phone = $_POST['user_phone'];
     $company_name = $_POST['company_name'];
     $company_address = $_POST['company_address'];
@@ -50,6 +51,8 @@ if (isset($_POST['submit'])) {
     $gst = $_POST['gst'];
     $iec_code = $_POST['iec_code'];
     $type = $_POST['type'];
+    $product_name = $_POST['product_name'];
+
     // image
     //  $_FILES is a super global variable which can be used to upload files
     $image = $_FILES["image"]["name"];
@@ -60,15 +63,13 @@ if (isset($_POST['submit'])) {
     if ($image == "") {
         $sql1 = "UPDATE `user` SET   `user_phone`='$user_phone',`company_name`='$company_name',`company_address`='$company_address',`user_website`='$user_website',`state`='$state',`city`='$city',`pincode`='$pincode',`product_name`='$product_name',`gst`='$gst',`iec_code`='$iec_code',`type`='$type' WHERE  `user_id`='$user_id'";
         $query1 = mysqli_query($con, $sql1) or die("Quiry fail !");
-        
-        
     } else {
         $sql1 = "UPDATE `user` SET   `user_phone`='$user_phone',`company_name`='$company_name',`company_address`='$company_address',`user_website`='$user_website',`state`='$state',`city`='$city',`pincode`='$pincode',`product_name`='$product_name',`gst`='$gst',`iec_code`='$iec_code',`type`='$type',`image`='$fld1' WHERE  `user_id`='$user_id'";
         $query1 = mysqli_query($con, $sql1) or die("dgdgdfgdfg");
         // The die() function prints a message and exits the current script
-        if ($query) {
-            header("location:index.php");
-        }
+        // if ($query) {
+        //     header("location:index.php");
+        // }
     }
 }
 ?>
@@ -133,9 +134,9 @@ if (isset($_POST['submit'])) {
                                             <div class="col-12 col-lg-9">
                                                 <select name="type" class="form-control py-2" size="" id="">
                                                     <option value="">----- Select Primary Business -----</option>
-                                                    <option value="exporter">Exporter</option>
-                                                    <option value="supplier">Supplier</option>
-                                                    <option value="">Manufacturer</option>
+                                                    <option value="exporter" <?php if($type == 'exporter') echo "selected"; ?>>Exporter</option>
+                                                    <option value="supplier" <?php if($type == 'supplier') echo "selected"; ?>>Supplier</option>
+                                                    <option value="Manufacturer" <?php if($type == 'manufacturer') echo "selected"; ?>>Manufacturer</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -144,42 +145,42 @@ if (isset($_POST['submit'])) {
                                             <div class="col-12 col-lg-9">
                                                 <select name="state" class="form-control py-2" size="" id="">
                                                     <option value="">----- SELECT-----</option>
-                                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                                    <option value="Assam">Assam</option>
-                                                    <option value="Bihar">Bihar</option>
-                                                    <option value="Chhattisgarh">Chhattisgarh</option>
-                                                    <option value="Goa">Goa</option>
-                                                    <option value="Gujarat">Gujarat</option>
-                                                    <option value="Haryana">Haryana</option>
-                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                                    <option value="Jharkhand">Jharkhand</option>
-                                                    <option value="Karnataka">Karnataka</option>
-                                                    <option value="Kerala">Kerala</option>
-                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                                    <option value="Maharashtra">Maharashtra</option>
-                                                    <option value="Manipur">Manipur</option>
-                                                    <option value="Meghalaya">Meghalaya</option>
-                                                    <option value="Mizoram">Mizoram</option>
-                                                    <option value="Nagaland">Nagaland</option>
-                                                    <option value="Odisha">Odisha</option>
-                                                    <option value="Punjab">Punjab</option>
-                                                    <option value="Rajasthan">Rajasthan</option>
-                                                    <option value="Sikkim">Sikkim</option>
-                                                    <option value="Tamil Nadu">Tamil Nadu</option>
-                                                    <option value="Telangana">Telangana</option>
-                                                    <option value="Tripura">Tripura</option>
-                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                                    <option value="Uttarakhand">Uttarakhand</option>
-                                                    <option value="West Bengal">West Bengal</option>
-                                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-                                                    <option value="Chandigarh">Chandigarh</option>
-                                                    <option value="Jammu and Kashmir">Jammu and Kashmirh</option>
-                                                    <option value="Ladakh">Ladakh</option>
-                                                    <option value="Lakshadweep">Lakshadweep</option>
-                                                    <option value="Puducherry">Puducherry</option>
-                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Andhra Pradesh" <?php if ($state == 'Andhra Pradesh') echo "selected"; ?>>Andhra Pradesh</option>
+                                                    <option value="Arunachal Pradesh" <?php if ($state == 'Arunachal Pradesh') echo "selected"; ?>>Arunachal Pradesh</option>
+                                                    <option value="Assam" <?php if ($state == 'Assam') echo "selected"; ?>>Assam</option>
+                                                    <option value="Bihar" <?php if ($state == 'Bihar') echo "selected"; ?>>Bihar</option>
+                                                    <option value="Chhattisgarh" <?php if ($state == 'Chhattisgarh') echo "selected"; ?>>Chhattisgarh</option>
+                                                    <option value="Goa" <?php if ($state == 'Goa') echo "selected"; ?>>Goa</option>
+                                                    <option value="Gujarat" <?php if ($state == 'Gujarat') echo "selected"; ?>>Gujarat</option>
+                                                    <option value="Haryana" <?php if ($state == 'Haryana') echo "selected"; ?>>Haryana</option>
+                                                    <option value="Himachal Pradesh" <?php if ($state == 'Himachal Pradesh') echo "selected"; ?>>Himachal Pradesh</option>
+                                                    <option value="Jharkhand" <?php if ($state == 'Jharkhand') echo "selected"; ?>>Jharkhand</option>
+                                                    <option value="Karnataka" <?php if ($state == 'Karnataka') echo "selected"; ?>>Karnataka</option>
+                                                    <option value="Kerala" <?php if ($state == 'Kerala') echo "selected"; ?>>Kerala</option>
+                                                    <option value="Madhya Pradesh" <?php if ($state == 'Madhya Pradesh') echo "selected"; ?>>Madhya Pradesh</option>
+                                                    <option value="Maharashtra" <?php if ($state == 'Maharashtra') echo "selected"; ?>>Maharashtra</option>
+                                                    <option value="Manipur" <?php if ($state == 'Manipur') echo "selected"; ?>>Manipur</option>
+                                                    <option value="Meghalaya" <?php if ($state == 'Meghalaya') echo "selected"; ?>>Meghalaya</option>
+                                                    <option value="Mizoram" <?php if ($state == 'Mizoram') echo "selected"; ?>>Mizoram</option>
+                                                    <option value="Nagaland" <?php if ($state == 'Nagaland') echo "selected"; ?>>Nagaland</option>
+                                                    <option value="Odisha" <?php if ($state == 'Odisha') echo "selected"; ?>>Odisha</option>
+                                                    <option value="Punjab" <?php if ($state == 'Punjab') echo "selected"; ?>>Punjab</option>
+                                                    <option value="Rajasthan" <?php if ($state == 'Rajasthan') echo "selected"; ?>>Rajasthan</option>
+                                                    <option value="Sikkim" <?php if ($state == 'Sikkim') echo "selected"; ?>>Sikkim</option>
+                                                    <option value="Tamil Nadu" <?php if ($state == 'Tamil Nadu') echo "selected"; ?>>Tamil Nadu</option>
+                                                    <option value="Telangana" <?php if ($state == 'Telangana') echo "selected"; ?>>Telangana</option>
+                                                    <option value="Tripura" <?php if ($state == 'Tripura') echo "selected"; ?>>Tripura</option>
+                                                    <option value="Uttar Pradesh" <?php if ($state == 'Uttar Pradesh') echo "selected"; ?>>Uttar Pradesh</option>
+                                                    <option value="Uttarakhand" <?php if ($state == 'Uttarakhand') echo "selected"; ?>>Uttarakhand</option>
+                                                    <option value="West Bengal" <?php if ($state == 'West Bengal') echo "selected"; ?>>West Bengal</option>
+                                                    <option value="Andaman and Nicobar Islands" <?php if ($state == 'Andaman and Nicobar Islands') echo "selected"; ?>>Andaman and Nicobar Islands</option>
+                                                    <option value="Dadra and Nagar Haveli and Daman and Diu" <?php if ($state == 'Dadra and Nagar Haveli and Daman and Diu') echo "selected"; ?>>Dadra and Nagar Haveli and Daman and Diu</option>
+                                                    <option value="Chandigarh" <?php if ($state == 'Chandigarh') echo "selected"; ?>>Chandigarh</option>
+                                                    <option value="Jammu and Kashmir" <?php if ($state == 'Jammu and Kashmir') echo "selected"; ?>>Jammu and Kashmirh</option>
+                                                    <option value="Ladakh" <?php if ($state == 'Ladakh') echo "selected"; ?>>Ladakh</option>
+                                                    <option value="Lakshadweep" <?php if ($state == 'Lakshadweep') echo "selected"; ?>>Lakshadweep</option>
+                                                    <option value="Puducherry" <?php if ($state == 'Puducherry') echo "selected"; ?>>Puducherry</option>
+                                                    <option value="Delhi" <?php if ($state == 'Delhi') echo "selected"; ?>>Delhi</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -1,76 +1,277 @@
 <?php
+// session_start();
+
+// if (!isset($_SESSION["password"])) {
+//     header("Location:index.php");
+// }
+?>
+<?php
 
 
 include_once "include/header.php";
-
-// form 1
-
 include "config.php";
+
+?>
+<!-- insert query -->
+
+<?php
 if (isset($_POST['submit'])) {
+    $product_name = $_POST['product_name'];
+    // $prodict_image1 = $_POST['prodict_image1'];
+    // $product_image2 = $_POST['product_image2'];
+    // $product_image3 = $_POST['product_image3'];
+    $cat_id = $_POST['cat_id'];
+    $sub_id = $_POST['sub_id'];
+    $micro_id = $_POST['micro_id'];
+    $inner_cat_id = $_POST['inner_cat_id'];
+    $product_description = $_POST['product_description'];
+    $company_name = $_POST['company_name'];
  
-    // 
-
-
-    // image
-    //  $_FILES is a super global variable which can be used to upload files
-    $product_image = $_FILES["product_image"]["name"];
-    $fld1 = "user-product-image/" . $product_image;
+    $img1 = $_FILES["img1"]["name"];
+    $fld1 = "logo/" . $img1;
     // $fld2 = "upload/" . $image;
-    move_uploaded_file($_FILES["product_image"]['tmp_name'], $fld1);
+    move_uploaded_file($_FILES["img1"]['tmp_name'], $fld1);
+    $insert = "INSERT INTO `free-listing-product`(`product_name`,`product_description`, `cat_id`, `sub_id`,`micro_id`,`inner_cat_id`,`company_name`,`img1`) VALUES ('$product_name','$product_description','$cat_id','$sub_id','$micro_id','$inner_cat_id','$company_name','$fld1')";
 
-    $insert = "INSERT INTO `user`(`product_image`) VALUES ('$fld1 ')";
     $query = mysqli_query($con, $insert);
 }
 ?>
-<!-- page content -->
+
+
+
+
+
+
+
+
+<style>
+    input[type='file'] {
+        opacity: 0
+    }
+</style>
 <div class="right_col" role="main">
-    <!-- top tiles -->
-    <div class="row">
-        <div class="col-12">
-            <div class="row">
-                <div class="col-12 col-lg-4 mb-5">
-                    <?php include_once "profile.php" ?>
-                </div>
-                <div class="col-12 col-lg-8 text-capitalize ">
-                    
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div  class="form_wizard wizard_verticle"> <!-- subbmit 2 start here  -->
-                            <div id=" ">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10 bg-white p-4">
+                <form action="" method="post" enctype="multipart/form-data" class="text-capitalize">
+                    <h5>Add Your   products  </h5>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for="" class=" ">product name</label>
+                            <input type="text" name="product_name" class="form-control">
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for="" class=" ">company name</label>
+                            <input type="text" name="company_name" class="form-control">
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for=""> Product image  </label>
+                            <div class="row">
                                 <div class="col-12">
-                                    <button class="section my-2 text-capitalize   btn btn-primary px-4  border disabled  rounded-pill ">Product & services</button>
-                                </div>
-                                <form class="form-horizontal form-label-left mt-3">
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12  ">
-                                            <div class="x_panel">
-                                                <div class="x_title">
-                                                    <h2>Product image </h2>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <div class="x_content">
-                                                    <input type="file" name="product_image" class="w-100 form-control py-5">
-                                                    <input type="text" name="product_name" placeholder="Enter Product/Service Name" class="form-control my-3">
-                                                </div>
-                                                <input type="submit" name="submit" class="btn btn-danger px-3 mt-3 w-25">
-                                            </div>
-                                        </div>
+                                    <div class="border">
+                                        <input class="form-control" type="file"  name="img1" id="formFile">
                                     </div>
-                                </form>
+                                </div>                                
                             </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="col-12 col-lg-6 my-2 text-capitalize">
+                            <label for=""> add Category</label>
+                            <select name="cat_id" class="form-control" id="category-dropdown">
+                                <option value="">------ Select Category -----</option>
+                                <?php
+                                $sel = "SELECT * FROM `category`";
+                                $query = mysqli_query($con, $sel);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    // $cat_id = $row['cat_id'];
+                                ?>
+                                    <option value="<?php echo $row['cat_id'] ?>" class="text-capitalize"> <?php echo $row['cat_name']  ?> </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for=""> add Sub Category</label>
+                            <select name="sub_id" class="form-control" id="sub-category-dropdown">
+                                <option value="">------ Select Sub Category -----</option>
+                                <?php
+                                // $_SESSION['cat_id'] = $cat_id;
+
+                                $sel = "SELECT * FROM `sub_cat` ";
+
+                                $query = mysqli_query($con, $sel);
+                                while ($row = mysqli_fetch_array($query)) {
+                                ?>
+                                    <option value="<?php echo $row['sub_id'] ?>" class="text-capitalize"><?php echo $row['sub_cat_name'] ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for="">add micro Category</label>
+                            <select name="inner_cat_id" class="form-control" id="inner-category-dropdown">
+                                <option value="">------ Select Inner Category -----</option>
+                                <?php
+                                $sel = "SELECT * FROM `inner_cat`";
+                                $query = mysqli_query($con, $sel);
+                                while ($row = mysqli_fetch_array($query)) {
+                                ?>
+                                    <option value="<?php echo $row['inner_cat_id'] ?>" class="text-capitalize"><?php echo $row['inner_cat_name'] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for="">add micro Category</label>
+                            <select name="micro_id" class="form-control" id="micro-category-dropdown">
+                                <option value="">------ Select Micro Category -----</option>
+                                <?php
+                                $sel = "SELECT * FROM `micro`";
+                                $query = mysqli_query($con, $sel);
+                                while ($row = mysqli_fetch_array($query)) {
+                                ?>
+                                    <option value="<?php echo $row['micro_id'] ?>" class="text-capitalize"><?php echo $row['micro_name'] ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <hr>
+                        </div>
+                        <h5 class="mt-3">Product Details</h5>
+                        <div class="col-12 my-2">
+                            <label for="">Product Description</label>
+                            <textarea name="product_description" rows="5" class="form-control" id=""></textarea>
+                        </div>
+
+
+
+
+                    </div>
+                    <hr>
+                    <!-- <div class="row my-4 border border-warning p-3 rounded">
+                        <div class="col-12">
+                            <h5>Company Details / optional details*</h5>
+                            <div class="col-12 col-md-3 my-2">
+                                <label for="">Company Name</label>
+                                <input class="form-control   " name=" " type="text" id="formFile">
+                            </div>
+                            <div class="col-12 col-md-3 my-2">
+                                <label for="">Company experience</label>
+                                <input class="form-control   " name="company_experience" type="text" id="formFile">
+                            </div>
+                            <div class="col-12 col-md-3 my-2">
+                                <label for="">Company Logo</label>
+                                <div class="border">
+                                    <input class="form-control   " name="company_experience" type="file" id="formFile">
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 my-2">
+                                <label for="">Company Type</label>
+                                <select name="" class="form-control" id="">
+                                    <option value="">---- Select----</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-12 my-2">
+                                <label for="">Company decsription</label>
+                               <textarea name="" class="form-control" id=""></textarea>
+                            </div>
+                        </div>
+                    </div> -->
+                    <input type="submit" name="submit" class="btn btn-danger  w-25">
+                    <input type="reset" name="submit" class="btn btn-warning   ">
+                </form>
             </div>
         </div>
     </div>
 </div>
-<br />
-</div>
 
 
+<script>
+    $(document).ready(function() {
+        $('#category-dropdown').on('change', function() {
+            var cat_id = this.value;
 
+            // alert(cat_id);
+
+            $.ajax({
+                url: "subcategory-by-category.php",
+                type: "POST",
+                data: {
+                    cat_id: cat_id
+                },
+                cache: false,
+                success: function(result) {
+                    $("#sub-category-dropdown").html(result);
+                    // alert(result);
+                }
+            });
+
+        });
+        // $('#sub-category-dropdown').on('change', function() {
+        //     var sub_id = this.value;
+
+        //     alert(sub_id);
+
+        //     $.ajax({
+        //         url: "subcategory-by-category.php",
+        //         type: "POST",
+        //         data: {
+        //             sub_id: sub_id
+        //         },
+        //         cache: false,
+        //         success: function(result) {
+        //             $("#micro-category-dropdown").html(result);
+        //             alert(result);
+        //         }
+        //     });
+
+        // });
+    });
+
+
+    // $(document).ready(function() {
+    //     $('#sub-category-dropdown').on('change', function() {
+    //         var sub_id = this.value;
+
+    //         // alert(sub_id);
+
+    //         $.ajax({
+    //             url: "subcategory-by-category.php",
+    //             type: "POST",
+    //             data: {
+    //                 sub_id: sub_id
+    //             },
+    //             cache: false,
+    //             success: function(result) {
+    //                 $("#micro-category-dropdown").html(result);
+    //                 // alert(result);
+    //             }
+    //         });
+
+    //     });
+    // });
+</script>
 
 <!-- /page content -->
 <?php
 include_once "include/footer.php";
 ?>
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-12 col-lg-3">
+            <img src="" height="auto" width="100%" alt="">
+            <h3>abc</h3>
+        </div>
+        <div class="col-12 col-lg-3">
+            <img src="" height="auto" width="100%" alt="">
+            <h3>abc</h3>
+        </div>
+        <div class="col-12 col-lg-3">
+            <img src="" height="auto" width="100%" alt="">
+            <h3>abc</h3>
+        </div>
+    </div>
+</div> -->

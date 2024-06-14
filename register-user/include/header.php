@@ -30,6 +30,7 @@ if (!isset($_SESSION["user_name"])) {
 
     <link href="./gentelella-master/build/css/custom.min.css" rel="stylesheet">
     <link href="./gentelella-master/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
     <!--  -->
