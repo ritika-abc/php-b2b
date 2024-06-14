@@ -20,9 +20,15 @@ include_once "include/header.php";
                 include "config.php"; // database configuration
                 /* Calculate Offset Code */
                 if (isset($_SESSION["user_id"])) {
-                    $user_id = $_SESSION["user_id"];
+                    echo "user id " .   $user_id = $_SESSION["user_id"];
                 }
-                $sql = "SELECT * FROM  `buyleads`";
+                
+                $sql = "SELECT * FROM  `limit_buylead` where `user_id`='$user_id'"; // working query
+            //     $sql = "
+            //    SELECT limit_buylead.limit_id, limit_buylead.user_email   
+            //     FROM limit_buylead
+            //     INNER JOIN buyleads ON limit_buylead.limit_id = buyleads.$user_id 
+            //     ";
                 $result = mysqli_query($con, $sql) or die("Query Failed.");
 
 
@@ -37,37 +43,27 @@ include_once "include/header.php";
                             <th>enquiry for</th>
                             <th>number</th>
                             <th>email</th>
-                            <th>click here</th>
+                            
                         </thead>
                         <tbody>
                             <?php
+
                             $serial =  1;
                             while ($row = mysqli_fetch_assoc($result)) {
-                               
+
                             ?>
                                 <tr>
                                     <td class='id'><?php echo $serial; ?></td>
-                                    <td><?php echo $row['buyer_name']; ?></td>
+                                    <td><?php echo $row['user_email']; ?></td>
+                                    <td><?php echo $row['buyer_email']; ?></td>
                                     <td><?php echo $row['queiry_for']; ?></td>
                                     <td><?php echo $row['number']; ?></td>
-                                    <td><?php echo $row['buyer_email']; ?></td>
-                                    <td><?php echo $row['accessed_at']; ?></td>
+
                                     <!-- <td><a href="accesses-buyleads.php?user_id=?php echo  $row['user_id']?>" class="btn btn-danger">click here</a></td> -->
-                                    <td>
-                                        <form method="POST" action="get_buylead.php">
-                                            <input type="hidden" name="buyleads_id" value="<?php echo $row['buyleads_id']; ?>">
-                                            <input type="hidden" name="buyer_email" value="<?php echo $row['buyer_email']; ?>">
-                                            <input type="hidden" name="queiry_for" value="<?php echo $row['queiry_for']; ?>">
-                                            <input type="hidden" name="number" value="<?php echo $row['number']; ?>">
-                                            <input type="hidden" name="accessed_at" value="<?php echo $row['accessed_at']; ?>">
-                                            <button type="submit" class="btn btn-primary text-center" style="width:200px;" name="submit"> Send Requirement</button>
-                                            <h4><?php ?></h4>
-                                        </form>
-                                    </td>
+
                                 </tr>
                             <?php
                                 $serial++;
-                                
                             } ?>
                         </tbody>
                     </table>

@@ -3,64 +3,47 @@
 
 include_once "include/header.php";
 
-?>
 
-
-<?php
- 
-
-// Check connection
-// if ($conn->connect_error) {
-//     die("Connection failed: " . $conn->connect_error);
-// }
-
-// Assume user is authenticated and their ID is stored in $user_id
-
-// Check if user has reached their monthly limit
-$user_id = 1; // Example user ID
-$limit = 20; // Monthly limit
-$month = date('m'); // Current month
-
-$sql = "SELECT COUNT(*) AS total_leads FROM buyleads WHERE buyleads_id  = $user_id AND MONTH(accessed_at) = $month";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-$total_leads = $row['total_leads'];
-
-if ($total_leads >= $limit) {
-    echo "You have reached your monthly limit of $limit buy leads.";
-    exit;
-}
-
-// If user hasn't reached their limit, allow access to buy leads
-
-// Record the access of buy lead
-$sql = "INSERT INTO buy_lead_access (user_id, accessed_at) VALUES ($user_id, NOW())";
-if ($conn->query($sql) === TRUE) {
-    echo "Buy lead access recorded successfully.";
-} else {
-    echo "Error recording buy lead access: " . $conn->error;
-}
-
-// Close connection
-$conn->close();
 ?>
 <!-- page content -->
 <div class="right_col" role="main">
     <!-- top tiles -->
     <div class="row">
-        <div class="col-12">
-            <form action="" class="my-5  d-flex">
-                <input type="search" placeholder="Search Here By Product Name" name="search" class="form-control w-75 rounded float-end">
-                <input type="submit" class="btn-sm btn-success">
-            </form>
-        </div>
-        <div class="col-12">
-            <div class="card p-3">
-                <h1>name</h1>
-                <h1>number</h1>
-                <h1>quiry for</h1>
+        <?php
+        if (isset($_SESSION["user_id"])) {
+            $user_id = $_SESSION["user_id"];
+        }
+        echo $user_id;
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+        include "config.php";
+        $sel = "SELECT buyleads.buyleads_id,buyleads.buyer_name,limit_buylead.limit_id,  limit_buylead.user_id,  limit_buylead.user_email, user.user_id, user.plan FROM ((limit_buylead INNER JOIN buyleads ON buyleads.buyleads_id =  limit_buylead.buyleads_id) INNER JOIN user ON user.user_id= limit_buylead.user_id) WHERE  limit_buylead.user_id='user_id' AND user.plan='active' LIMIT 10";
+        // $sel = "SELECT buyleads.buyleads_id, buyleads.buyer_name, limit_buleads.limit_id, limit_buleads.user_id, limit_buleads.user_email, user.user_id, user.plan 
+        // FROM ((limit_buleads 
+        // INNER JOIN buyleads ON buyleads.buyleads_id = limit_buleads.buyleads_id) 
+        // INNER JOIN user ON user.user_email = limit_buleads.buyer_email) 
+        // WHERE limit_buleads.buyer_email = '$user_id' 
+        // AND user.plan = 'active' 
+        // AND MONTH(limit_buleads.accessed_at) = $currentMonth 
+        // AND YEAR(limit_buleads.accessed_at) = $currentYear 
+        // LIMIT 10";
+        // // $sel = "SELECT buyleads.buyleads_id, buyleads.buyer_name , buyleads.queiry_for , limit_buylead.user_email, limit_buylead.buyer_email
+        // // FROM buyleads 
+        // // (INNER JOIN limit_buylead ON buyleads.buyleads_id = limit_buylead.buyleads_id) ";
+        $query = mysqli_query($con, $sel);
+        while ($row = mysqli_fetch_array($query)) {
+        ?>
+
+            <div class="col-4">
+                <div class=" card p-3 ">
+                    <p><?php echo $row['buyleads_id'] ?></p>
+                    <p><?php echo $row['user_id'] ?></p>
+                    
+                    <p><?php echo $row['user_email'] ?></p>
+                    
+                </div>
             </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 <br />
@@ -68,8 +51,7 @@ $conn->close();
 
 
 
-
-<!-- /page content -->
 <?php
 include_once "include/footer.php";
+
 ?>

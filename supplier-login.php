@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     if ($user_matched > 0) {
         $_SESSION['user_name'] = $user_name;
         $_SESSION['user_email'] = $user_email;
-        // $_SESSION['user_role'] =  $row['user_role'];
+        $_SESSION['user_id'] =  $row['user_id'];
 
         
         

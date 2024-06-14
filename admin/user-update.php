@@ -135,7 +135,10 @@ if (isset($_POST['submit'])) {
                 <label for="">plan</label>
                 <select name="plan" class="form-control text-capitalize" id="">
                     <option value="not-active" <?php if($plan == 'not-active') echo "selected"; ?>>not active</option>
-                    <option value="active" <?php if($plan == 'active') echo "selected"; ?>>active</option>
+                    <option value="prime" <?php if($plan == 'prime') echo "selected"; ?>>Prime</option>
+                    <option value="prime-pro" <?php if($plan == 'prime-pro') echo "selected"; ?>>prime-pro</option>
+                    <option value="ultra" <?php if($plan == 'ultra') echo "selected"; ?>>ultra</option>
+                    <option value="ultra-pro" <?php if($plan == 'ultra-pro') echo "selected"; ?>>ultra-pro</option>
                 </select>
             </div>
             <div class="col-12 col-md-2 my-3 text-capitalize">

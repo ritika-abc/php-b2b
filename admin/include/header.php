@@ -80,11 +80,12 @@
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view category list</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add sub category</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view sub category list</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> Add Product</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="add-product.php" class="nav-link"> Add Product</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="view-product.php" class="nav-link"> view Product</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add micro sub category</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view micro sub category list</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add Supplier  </a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view All  Supplier List</a></li>
+                         
+                        <li class="nav-item mt-0 p-0"><a href="view-user.php" class="nav-link"> view All  Supplier List</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add new buyleads</a></li>
                         <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view all buyleads</a></li>
                     </ul>
