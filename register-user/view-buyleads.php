@@ -35,9 +35,9 @@ include_once "include/header.php";
                             <th>S.No.</th>
                             <th>buyer name</th>
                             <th>enquiry for</th>
-                            <th>number</th>
-                            <th>email</th>
-                            <th>click here</th>
+                            <!-- <th>number</th>
+                            <th>email</th> -->
+                            <th>Location</th>
                         </thead>
                         <tbody>
                             <?php
@@ -49,9 +49,9 @@ include_once "include/header.php";
                                     <td class='id'><?php echo $serial; ?></td>
                                     <td><?php echo $row['buyer_name']; ?></td>
                                     <td><?php echo $row['queiry_for']; ?></td>
-                                    <td><?php echo $row['number']; ?></td>
-                                    <td><?php echo $row['buyer_email']; ?></td>
-                                    <td><?php echo $row['accessed_at']; ?></td>
+                                    <!-- <td>?php echo $row['number']; ?></td>
+                                    <td>?php echo $row['buyer_email']; ?></td> -->
+                                    <td><?php echo $row['buyer_location']; ?></td>
                                     <!-- <td><a href="accesses-buyleads.php?user_id=?php echo  $row['user_id']?>" class="btn btn-danger">click here</a></td> -->
                                     <td>
                                         <form method="POST" action="get_buylead.php">
@@ -59,6 +59,8 @@ include_once "include/header.php";
                                             <input type="hidden" name="buyer_email" value="<?php echo $row['buyer_email']; ?>">
                                             <input type="hidden" name="queiry_for" value="<?php echo $row['queiry_for']; ?>">
                                             <input type="hidden" name="number" value="<?php echo $row['number']; ?>">
+                                            <input type="hidden" name="buyer_name" value="<?php echo $row['buyer_name']; ?>">
+                                            <input type="hidden" name="buyer_location" value="<?php echo $row['buyer_location']; ?>">
                                             <input type="hidden" name="accessed_at" value="<?php echo $row['accessed_at']; ?>">
                                             <button type="submit" class="btn btn-primary text-center" style="width:200px;" name="submit"> Send Requirement</button>
                                             <h4><?php ?></h4>

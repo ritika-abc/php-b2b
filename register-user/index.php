@@ -119,7 +119,7 @@ if (isset($_POST['submit'])) {
                                 <!-- <h2 class="StepTitle">Step 1 Content</h2> -->
                                 <!-- <button class="section my-2   btn btn-primary px-4 disabled  rounded-pill">Company Details</button> -->
                                 <div class="">
-                                    <button class="section my-2 text-capitalize   btn btn-primary px-4  border disabled  rounded-pill ">Company details</button>
+                                    <button class="section my-2 text-capitalize   btn btn-primary px-4  border disabled  rounded-pill ">Edit Your Profile</button>
 
                                     <div class="bg-white p-4 rounded">
                                         <div class="row text-capitalize mb-3">
@@ -229,7 +229,7 @@ if (isset($_POST['submit'])) {
                             <!-- subbmit 2 start here  -->
                             <div id="step-22">
                                 <div class="col-12">
-                                    <button class="section my-2 text-capitalize   btn btn-primary px-4  border disabled  rounded-pill ">Product & services</button>
+                                    <button class="section my-2 text-capitalize   btn btn-primary px-4  border disabled  rounded-pill ">Company's Logo </button>
                                 </div>
                                 <form class="form-horizontal form-label-left mt-3">
                                     <div class="row">
@@ -241,7 +241,8 @@ if (isset($_POST['submit'])) {
                                                 </div>
                                                 <div class="x_content">
                                                     <input type="file" name="image" value="<?php echo $image; ?>" class="w-100 form-control py-5">
-                                                    <input type="text" name="product_name" value="<?php echo $product_name; ?>" placeholder="Enter Product / Service Name" class="form-control my-3">
+                                                    <label for="" class="my-3">Service name / Product name</label>
+                                                    <input type="text" name="product_name" value="<?php echo $product_name; ?>" placeholder="Enter Product / Service Name" class="form-control ">
                                                 </div>
                                             </div>
                                         </div>
@@ -253,8 +254,11 @@ if (isset($_POST['submit'])) {
                                     <button class="section my-2 text-capitalize   btn btn-primary px-4  border disabled  rounded-pill ">GST Details</button>
                                 </div>
                                 <div class="bg-white p-3 my-3">
-                                    <input type="text" name="gst" value="<?php echo $gst; ?>" placeholder="Enter Your GST" class="form-control my-3">
-                                    <input type="text" name="iec_code" value="<?php echo $iec_code; ?>" placeholder="Enter Your IEC Code" class="form-control my-3">
+                                    <label for="" class="mt-3">GST Details</label>
+                                    <input type="text" name="gst" value="<?php echo $gst; ?>" placeholder="Enter Your GST" class="form-control ">
+                                    <label for="" class="mt-3">IEC Details</label>
+
+                                    <input type="text" name="iec_code" value="<?php echo $iec_code; ?>" placeholder="Enter Your IEC Code" class="form-control  ">
                                     <input type="submit" name="submit" class="btn btn-danger px-3 mt-3 w-25">
                                 </div>
                             </div>
@@ -262,6 +266,7 @@ if (isset($_POST['submit'])) {
                     </form>
                     <?php ?>
                 </div>
+              
                 <!-- End SmartWizard Content -->
             </div>
         </div>

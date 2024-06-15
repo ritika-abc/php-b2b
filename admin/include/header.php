@@ -38,12 +38,12 @@
 
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
-                        <div class="profile_pic">
+                        <!-- <div class="profile_pic">
                             <img src="../gentelella-master/images/img.jpg" alt="..." class="img-circle profile_img">
-                        </div>
+                        </div> -->
                         <div class="profile_info">
-                            <span>Welcome, reet</span>
-                            <h2>John Doe</h2>
+                            <span> </span>
+                            <h2> </h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -77,17 +77,16 @@
                     <hr class="text-white bg-light">
                     <ul class="navbar-nav mx-4 text-capitalize">
                         <li class="nav-item mt-0 p-0"><a href="add_category.php" class="nav-link"> add category</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view category list</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add sub category</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view sub category list</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="add-sub-cat.php" class="nav-link"> Add Sub Caetegory</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="add-inner-cat.php" class="nav-link"> add Inner category</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="add-micro-cat.php" class="nav-link"> add Micro category</a></li>
                         <li class="nav-item mt-0 p-0"><a href="add-product.php" class="nav-link"> Add Product</a></li>
                         <li class="nav-item mt-0 p-0"><a href="view-product.php" class="nav-link"> view Product</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add micro sub category</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view micro sub category list</a></li>
+                     
                          
                         <li class="nav-item mt-0 p-0"><a href="view-user.php" class="nav-link"> view All  Supplier List</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> add new buyleads</a></li>
-                        <li class="nav-item mt-0 p-0"><a href="" class="nav-link"> view all buyleads</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="add-buyleads.php" class="nav-link"> add new buyleads</a></li>
+                        <li class="nav-item mt-0 p-0"><a href="view-buyleads.php" class="nav-link"> view all buyleads</a></li>
                     </ul>
                     <!-- /sidebar menu -->
 

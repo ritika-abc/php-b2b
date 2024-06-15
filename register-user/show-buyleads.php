@@ -20,7 +20,7 @@ include_once "include/header.php";
                 include "config.php"; // database configuration
                 /* Calculate Offset Code */
                 if (isset($_SESSION["user_id"])) {
-                    echo "user id " .   $user_id = $_SESSION["user_id"];
+                      "user id " .   $user_id = $_SESSION["user_id"];
                 }
                 
                 $sql = "SELECT * FROM  `limit_buylead` where `user_id`='$user_id'"; // working query
@@ -40,9 +40,11 @@ include_once "include/header.php";
                         <thead>
                             <th>S.No.</th>
                             <th>buyer name</th>
+                            <th>Buyer Email</th>
                             <th>enquiry for</th>
-                            <th>number</th>
-                            <th>email</th>
+                            <th>Number</th>
+                            <th>enquiry Date</th>
+                            <th>Location</th>
                             
                         </thead>
                         <tbody>
@@ -54,10 +56,12 @@ include_once "include/header.php";
                             ?>
                                 <tr>
                                     <td class='id'><?php echo $serial; ?></td>
-                                    <td><?php echo $row['user_email']; ?></td>
+                                    <td><?php echo $row['buyer_name']; ?></td>
                                     <td><?php echo $row['buyer_email']; ?></td>
                                     <td><?php echo $row['queiry_for']; ?></td>
                                     <td><?php echo $row['number']; ?></td>
+                                    <td><?php echo $row['date']; ?></td>
+                                    <td><?php echo $row['buyer_location']; ?></td>
 
                                     <!-- <td><a href="accesses-buyleads.php?user_id=?php echo  $row['user_id']?>" class="btn btn-danger">click here</a></td> -->
 

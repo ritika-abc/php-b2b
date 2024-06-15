@@ -17,11 +17,13 @@ echo "$user_id";
 if (isset($_POST['submit'])) {
     $buyleads_id = $_POST["buyleads_id"];
     $buyer_email = $_POST["buyer_email"];
+    $buyer_name = $_POST["buyer_name"];
     $number = $_POST["number"];
     $queiry_for = $_POST["queiry_for"];
+    $buyer_location = $_POST["buyer_location"];
  
 
-    $sql = "INSERT INTO `limit_buylead`(`buyleads_id`, `user_email`,`user_id`,`buyer_email`,`number`,`queiry_for`) VALUES ('$buyleads_id','$user_email','$user_id','$buyer_email','$number','$queiry_for')";
+    $sql = "INSERT INTO `limit_buylead`(`buyleads_id`, `user_email`,`user_id`,`buyer_email`,`number`,`queiry_for`,`buyer_name`,`buyer_location`) VALUES ('$buyleads_id','$user_email','$user_id','$buyer_email','$number','$queiry_for','$buyer_name','$buyer_location')";
     $result =  $con->query($sql);
     echo '<script>alert("Your Requirement sent successfully ")</script>';
     echo "<script> location.href='show-buyleads.php'; </script>";

@@ -34,7 +34,7 @@ if (!isset($_SESSION["user_name"])) {
 
 
     <!--  -->
-     
+
     <style>
         body {
             height: 100vh;
@@ -51,15 +51,15 @@ if (!isset($_SESSION["user_name"])) {
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
-                     
 
-                    
+
+
 
                     <!-- menu profile quick info -->
                     <div class="profile clearfix">
-                       
+
                         <div class="profile_info">
-                            <span>Welcome,  </span>
+                            <span>Welcome, </span>
                             <h3 class="text-white text-capitalize"><?php echo $_SESSION["user_name"] ?></h3>
                         </div>
                     </div>
@@ -79,12 +79,11 @@ if (!isset($_SESSION["user_name"])) {
                                         <li><a href="../register-user/add-product.php" class="active">Add Your Free Product</a></li>
                                         <li><a href="../register-user/view-product.php">View Your Product</a></li>
 
-                                        <li><a href="index2.html">All buyleads</a></li>
-                                        <li><a href="index3.html">Access Buyleads</a></li>
-                                      
+                                        <li><a href="view-buyleads.php">All buyleads</a></li>
+                                        <li><a href="show-buyleads.php">Access Buyleads</a></li>
                                     </ul>
                                 </li>
-                            </ul>                           
+                            </ul>
                         </div>
                     </div>
                     <!-- /sidebar menu -->
@@ -114,7 +113,12 @@ if (!isset($_SESSION["user_name"])) {
                     <div class="nav toggle">
                         <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                     </div>
-                    <nav class="nav navbar-nav">
+                    <ul class="nav  justify-content-end">
+                        <li class="nav-item "><a href="" class="nav-link">Home</a></li>
+                        <li class="nav-item "><a href="../logout.php" class="nav-link btn btn-success text-dark btn-sm fw-bold">Logout here</a></li>
+                        <!-- <li class="nav-item"><a href="" class="nav-link">text</a></li> -->
+                    </ul>
+                    <!-- <nav class="nav navbar-nav">
                         <ul class=" navbar-right">
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
@@ -196,7 +200,7 @@ if (!isset($_SESSION["user_name"])) {
                                 </ul>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> -->
                 </div>
             </div>
             <!-- /top navigation -->

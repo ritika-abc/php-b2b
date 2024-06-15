@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
     $inner_cat_id = $_POST['inner_cat_id'];
     $product_description = $_POST['product_description'];
     $company_name = $_POST['company_name'];
- 
+
     $img1 = $_FILES["img1"]["name"];
     $fld1 = "logo/" . $img1;
     // $fld2 = "upload/" . $image;
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
         <div class="row justify-content-center">
             <div class="col-10 bg-white p-4">
                 <form action="" method="post" enctype="multipart/form-data" class="text-capitalize">
-                    <h5>Add Your   products  </h5>
+                    <h5>Add Your products </h5>
                     <div class="row">
                         <div class="col-12 col-lg-6 my-2">
                             <label for="" class=" ">product name</label>
@@ -65,13 +65,13 @@ if (isset($_POST['submit'])) {
                             <input type="text" name="company_name" class="form-control">
                         </div>
                         <div class="col-12 col-lg-6 my-2">
-                            <label for=""> Product image  </label>
+                            <label for=""> Product image </label>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="border">
-                                        <input class="form-control" type="file"  name="img1" id="formFile">
+                                        <input class="form-control" type="file" name="img1" id="formFile">
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 my-2 text-capitalize">
@@ -133,6 +133,10 @@ if (isset($_POST['submit'])) {
                                 }
                                 ?>
                             </select>
+                        </div>
+                        <div class="col-12 col-lg-6 my-2">
+                            <label for=""> Seller Location Country  and State   </label>
+                            <input type="text"  class="form-control">
                         </div>
 
                         <div class="col-12">
