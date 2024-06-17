@@ -6,6 +6,8 @@ include "config.php";
 if (isset($_POST['submit'])) {
     $micro_name = $_POST['micro_name'];
     $sub_id = $_POST['sub_id'];
+    $cat_id = $_POST['cat_id'];
+    $inner_cat_id = $_POST['inner_cat_id'];
 
     $micro_cat_image = $_FILES["micro_cat_image"]["name"];
     $fld1 = "extra_image/" . $micro_cat_image;
@@ -21,7 +23,7 @@ if (isset($_POST['submit'])) {
         echo "<script> alert('Already Exists')</script>";
     } else {
         $insrt = mysqli_query($con, "INSERT INTO 
-        `micro`(`micro_name`,`micro_cat_image`,`sub_id`) VALUES ('$micro_name','$fld1','$sub_id')");
+        `micro`(`micro_name`,`micro_cat_image`,`sub_id`,`cat_id`,`inner_cat_id`) VALUES ('$micro_name','$fld1','$sub_id','$cat_id','$inner_cat_id')");
     }
 }
 
